@@ -16,7 +16,7 @@ public class MainActivity extends Activity implements ServiceConnection {
 
     private static final String TAG = "TWPOC";
 
-    private IAddonService binderObject;
+    private IAddonService addOnService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,8 @@ public class MainActivity extends Activity implements ServiceConnection {
 
         try {
             Log.d(TAG, iBinder.getInterfaceDescriptor());
-            binderObject = (IAddonService) iBinder;
-            binderObject.a(1000);
+            addOnService = IAddonService.Stub.asInterface(iBinder);
+            Log.d(TAG, String.valueOf(addOnService.verify()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,6 +47,6 @@ public class MainActivity extends Activity implements ServiceConnection {
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
         Log.d(TAG, "onServiceDisconnected " + componentName);
-        binderObject = null;
+        addOnService = null;
     }
 }
