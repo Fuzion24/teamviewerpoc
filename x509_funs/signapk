@@ -1,4 +1,4 @@
 #! /bin/sh
 
- zip --delete $1 "META-INF/*" && \
+ zip --delete $1 "META-INF/*";
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -storepass keystore -keystore ./keystore.jks  $1 alias_name
