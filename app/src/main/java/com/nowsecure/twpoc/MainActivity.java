@@ -10,9 +10,13 @@ import android.os.IBinder;
 import android.util.Log;
 
 
+
+
 public class MainActivity extends Activity implements ServiceConnection {
 
     private static final String TAG = "TWPOC";
+
+    private IAddonService binderObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +34,19 @@ public class MainActivity extends Activity implements ServiceConnection {
     @Override
     public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
         Log.d(TAG, "onServiceConnected " + componentName + " " + iBinder);
+
+        try {
+            Log.d(TAG, iBinder.getInterfaceDescriptor());
+            binderObject = (IAddonService) iBinder;
+            binderObject.a(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
         Log.d(TAG, "onServiceDisconnected " + componentName);
+        binderObject = null;
     }
 }
