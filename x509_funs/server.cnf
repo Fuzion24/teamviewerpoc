@@ -1,0 +1,30 @@
+FQDN = google.com
+ORGNAME = value, CN=*.com
+
+# subjectAltName entries: to add DNS aliases to the CSR, delete
+# the '#' character in the ALTNAMES line, and change the subsequent
+# 'DNS:' entries accordingly. Please note: all DNS names must
+# resolve to the same IP address as the FQDN.
+ALTNAMES = DNS:$FQDN # DNS:google.com , DNS:www.foo.example.org
+
+# --- no modifications required below ---
+[ req ]
+default_bits = 2048
+prompt = no
+encrypt_key = no
+serial  = 1287658381
+default_md = sha1
+distinguished_name = dn
+req_extensions = v3_req
+
+[ v3_req ]
+# Extensions to add to a certificate request
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = $ALTNAMES
+
+[ dn ]
+C = US
+O = $ORGNAME
+CN = $FQDN
+OU = $ORGNAME
+
