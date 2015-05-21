@@ -23,6 +23,8 @@ public class MainActivity extends Activity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        CertToys.doStuff(this);
         // binding to the teamviewer service (hopefully)
         Intent i = new Intent();
         i.setComponent(new ComponentName("com.teamviewer.quicksupport.addon.samsung",
@@ -38,7 +40,9 @@ public class MainActivity extends Activity implements ServiceConnection {
         try {
             Log.d(TAG, iBinder.getInterfaceDescriptor());
             addOnService = IAddonService.Stub.asInterface(iBinder);
+            addOnService.init();
             Log.d(TAG, String.valueOf(addOnService.verify()));
+            Log.d(TAG, "We made it here without crashing.");
         } catch (Exception e) {
             e.printStackTrace();
         }
