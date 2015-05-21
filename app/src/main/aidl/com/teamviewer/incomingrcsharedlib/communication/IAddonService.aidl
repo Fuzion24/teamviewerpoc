@@ -7,7 +7,6 @@ import com.teamviewer.incomingrcsharedlib.communication.ScreenshotData;
 import com.teamviewer.incomingrcsharedlib.communication.ScreenshotInfo;
 import com.teamviewer.incomingrcsharedlib.communication.VirtualKeyCode;
 
-
 interface IAddonService {
 
     void a(int arg1);
@@ -16,7 +15,7 @@ interface IAddonService {
 
     void c(int arg1, KeyAction arg2);
 
-    void d(int arg1, PointerAction arg2, int arg3, int arg4);
+    void d(int arg1,in PointerAction arg2, int arg3, int arg4);
 
     void d(int arg1, PointerAction arg2, int arg3, int arg4, long arg5);
 
