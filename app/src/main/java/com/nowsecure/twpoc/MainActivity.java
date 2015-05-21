@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
-
+import com.teamviewer.incomingrcsharedlib.communication.IAddonService;
 
 
 public class MainActivity extends Activity implements ServiceConnection {

@@ -13,17 +13,17 @@ interface IAddonService {
 
     void b(int arg1, int arg2, int arg3);
 
-    void c(int arg1, KeyAction arg2);
+    void c(int arg1,in KeyAction arg2);
 
     void d(int arg1,in PointerAction arg2, int arg3, int arg4);
 
-    void d(int arg1, PointerAction arg2, int arg3, int arg4, long arg5);
+    void e(int arg1,in PointerAction arg2, int arg3, int arg4, long arg5);
 
-    void f(VirtualKeyCode arg1, KeyAction arg2);
+    void f(in VirtualKeyCode arg1,in KeyAction arg2);
 
     boolean g();
 
-    boolean h(ScreenshotData arg1, int arg2);
+    boolean h(in ScreenshotData arg1, int arg2);
 
     boolean i();
 
