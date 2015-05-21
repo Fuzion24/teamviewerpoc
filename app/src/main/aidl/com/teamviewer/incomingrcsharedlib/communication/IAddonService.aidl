@@ -9,29 +9,29 @@ import com.teamviewer.incomingrcsharedlib.communication.VirtualKeyCode;
 
 interface IAddonService {
 
-    void a(int arg1);
+    void injectUnicode(int arg1);
 
-    void b(int arg1, int arg2, int arg3);
+    void startPointerSequence(int arg1, int arg2, int arg3);
 
-    void c(int arg1,in KeyAction arg2);
+    void injectAndroidKeyCode(int arg1,in KeyAction arg2);
 
-    void d(int arg1,in PointerAction arg2, int arg3, int arg4);
+    void addPointerAction(int arg1,in PointerAction arg2, int arg3, int arg4);
 
-    void e(int arg1,in PointerAction arg2, int arg3, int arg4, long arg5);
+    void addPointerAction2(int arg1,in PointerAction arg2, int arg3, int arg4, long arg5);
 
-    void f(in VirtualKeyCode arg1,in KeyAction arg2);
+    void injectVirtualKeyCode(in VirtualKeyCode arg1,in KeyAction arg2);
 
-    boolean g();
+    boolean verify();
 
-    boolean h(in ScreenshotData arg1, int arg2);
+    boolean copyScreenshot(in ScreenshotData arg1, int arg2);
 
-    boolean i();
+    boolean isAvailable();
 
-    void j();
+    void init();
 
-    ScreenshotInfo k();
+    ScreenshotInfo getScreenshot();
 
-    void l();
+    void doNothing();
 
-    void m();
+    void cancelPointerSequence();
 }
