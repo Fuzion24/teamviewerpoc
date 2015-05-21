@@ -3,10 +3,23 @@ package com.teamviewer.incomingrcsharedlib.communication;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by fuzion24 on 5/21/15.
- */
-public class KeyAction implements Parcelable {
+
+public enum KeyAction implements Parcelable {
+
+    UNKNOWN, DOWN,UP,CANCEL;
+
+    public static final Parcelable.Creator<KeyAction> CREATOR = new Parcelable.Creator<KeyAction>() {
+
+        public KeyAction createFromParcel(Parcel src) {
+            return KeyAction.values()[src.readInt()];
+        }
+
+        public KeyAction[] newArray(int size) {
+            return new KeyAction[size];
+        }
+
+    };
+
     @Override
     public int describeContents() {
         return 0;
@@ -14,6 +27,6 @@ public class KeyAction implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeInt(this.ordinal());
     }
 }

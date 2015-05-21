@@ -2,30 +2,29 @@ package com.teamviewer.incomingrcsharedlib.communication;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 public enum PointerAction implements Parcelable {
-  Unknown, Down, Up, Move, Hover, Cancel;
 
+    Unknown, Down, Up, Move, Hover, Cancel;
+
+    public static final Parcelable.Creator<PointerAction> CREATOR = new Parcelable.Creator<PointerAction>() {
+
+        public PointerAction createFromParcel(Parcel src) {
+            return PointerAction.values()[src.readInt()];
+        }
+
+        public PointerAction[] newArray(int size) {
+            return new PointerAction[size];
+        }
+
+    };
+
+    @Override
     public int describeContents() {
         return 0;
     }
 
-    public void writeToParcel(Parcel arg2, int arg3) {
-        arg2.writeInt(this.ordinal());
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.ordinal());
     }
-
 }
-
-/*    static {
-        PointerAction.a = new PointerAction("Unknown", 0);
-        PointerAction.b = new PointerAction("Down", 1);
-        PointerAction.c = new PointerAction("Up", 2);
-        PointerAction.d = new PointerAction("Move", 3);
-        PointerAction.e = new PointerAction("Hover", 4);
-        PointerAction.f = new PointerAction("Cancel", 5);
-        PointerAction.g = new PointerAction[]{PointerAction.a, PointerAction.b, PointerAction.c, PointerAction
-                .d, PointerAction.e, PointerAction.f};
-        PointerAction.CREATOR = new d();
-    }
-
-*/

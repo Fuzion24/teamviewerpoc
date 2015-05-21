@@ -10,6 +10,17 @@ public class ScreenshotInfo implements Parcelable {
     public int d;
     public int e;
 
+    public static final Parcelable.Creator<ScreenshotInfo> CREATOR = new Parcelable.Creator<ScreenshotInfo>() {
+
+        public ScreenshotInfo createFromParcel(Parcel src) {
+            return new ScreenshotInfo(src);
+        }
+
+        public ScreenshotInfo[] newArray(int size) {
+            return new ScreenshotInfo[size];
+        }
+
+    };
 
     public ScreenshotInfo() {
         super();

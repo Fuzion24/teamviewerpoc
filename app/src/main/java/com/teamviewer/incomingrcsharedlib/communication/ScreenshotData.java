@@ -19,6 +19,19 @@ public class ScreenshotData implements Parcelable {
         super();
     }
 
+    public static final Parcelable.Creator<ScreenshotData> CREATOR = new Parcelable.Creator<ScreenshotData>() {
+
+        public ScreenshotData createFromParcel(Parcel src) {
+            return new ScreenshotData(src);
+        }
+
+        public ScreenshotData[] newArray(int size) {
+            return new ScreenshotData[size];
+        }
+
+    };
+
+
     private ScreenshotData(Parcel arg3) {
         super();
         this.b = arg3.readFileDescriptor();
