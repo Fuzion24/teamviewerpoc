@@ -15,9 +15,8 @@ public class ScreenshotData implements Parcelable {
     FileDescriptor a;
     ParcelFileDescriptor b;
 
-    public ScreenshotData(FileDescriptor fd) {
+    public ScreenshotData() {
         super();
-        this.a = fd;
     }
 
     public static final Parcelable.Creator<ScreenshotData> CREATOR = new Parcelable.Creator<ScreenshotData>() {

