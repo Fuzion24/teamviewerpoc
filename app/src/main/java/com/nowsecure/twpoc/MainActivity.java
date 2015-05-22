@@ -7,10 +7,17 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.MemoryFile;
 import android.util.Log;
 
 import com.teamviewer.incomingrcsharedlib.communication.IAddonService;
+import com.teamviewer.incomingrcsharedlib.communication.ScreenshotData;
 import com.teamviewer.incomingrcsharedlib.communication.ScreenshotInfo;
+
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 
 public class MainActivity extends Activity implements ServiceConnection {
@@ -18,6 +25,7 @@ public class MainActivity extends Activity implements ServiceConnection {
     private static final String TAG = "TWPOC";
 
     private IAddonService addOnService;
+    private ScreenshotData screenshotData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,14 @@ public class MainActivity extends Activity implements ServiceConnection {
             Log.d(TAG, "ScreenShot info " + ssi.c);
             Log.d(TAG, "ScreenShot info " + ssi.d);
 
+            File f = getFilesDir().createTempFile("derp","img");
+            f.setWritable(true, false);
+            FileOutputStream s = new FileOutputStream(f);
+
+            screenshotData = new ScreenshotData(s.getFD());
+            addOnService.copyScreenshot(screenshotData, 0);
+
+            Log.d(TAG, "ScreenshotData: " + screenshotData);
 
             Log.d(TAG, "We made it here without crashing.");
         } catch (Exception e) {
