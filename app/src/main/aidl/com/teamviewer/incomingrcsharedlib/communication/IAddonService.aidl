@@ -17,7 +17,7 @@ interface IAddonService {
 
     void doNothing();
 
-    ScreenshotInfo getScreenshot();
+    ScreenshotInfo getScreenshotInfo();
 
     boolean copyScreenshot(in ScreenshotData arg1, int arg2);
 

@@ -10,6 +10,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.teamviewer.incomingrcsharedlib.communication.IAddonService;
+import com.teamviewer.incomingrcsharedlib.communication.ScreenshotInfo;
 
 
 public class MainActivity extends Activity implements ServiceConnection {
@@ -41,7 +42,17 @@ public class MainActivity extends Activity implements ServiceConnection {
             Log.d(TAG, iBinder.getInterfaceDescriptor());
             addOnService = IAddonService.Stub.asInterface(iBinder);
             addOnService.init();
-            Log.d(TAG, String.valueOf(addOnService.verify()));
+            Log.d(TAG, "IsAvailable: " + String.valueOf(addOnService.verify()));
+            Log.d(TAG, "verify: " + String.valueOf(addOnService.verify()));
+
+            ScreenshotInfo ssi = addOnService.getScreenshotInfo();
+
+            Log.d(TAG, "ScreenShot info " + ssi.a);
+            Log.d(TAG, "ScreenShot info " + ssi.b);
+            Log.d(TAG, "ScreenShot info " + ssi.c);
+            Log.d(TAG, "ScreenShot info " + ssi.d);
+
+
             Log.d(TAG, "We made it here without crashing.");
         } catch (Exception e) {
             e.printStackTrace();
